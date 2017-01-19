@@ -11,7 +11,15 @@ class TestFakerEducator < Test::Unit::TestCase
   end
 
   def test_course
-    assert @tester.university.match(/(\w+\.? ?){3,6}/)
+    assert @tester.course.match(/(\w+\.? ?\(?\)?){1,3} \d{3}/)
+  end
+
+  def test_subject
+    assert @tester.course.match(/(\w+\.? ?\(?\)?){1,3}/)
+  end
+
+  def test_degree
+    assert @tester.course.match(/(\w+\.? ?\(?\)?){3,6}/)
   end
 
   def test_secondary_school
