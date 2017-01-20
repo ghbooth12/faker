@@ -7,7 +7,7 @@ module Faker
         "#{parse('educator.name')} #{fetch('educator.tertiary.type')}"
       end
 
-      def course
+      def course_name
         "#{fetch('educator.tertiary.degree.subject')} #{numerify(fetch('educator.tertiary.degree.course_number'))}"
       end
 
