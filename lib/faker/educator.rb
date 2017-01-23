@@ -7,16 +7,23 @@ module Faker
         "#{parse('educator.name')} #{fetch('educator.tertiary.type')}"
       end
 
-      def course_name
-        "#{fetch('educator.tertiary.degree.subject')} #{numerify(fetch('educator.tertiary.degree.course_number'))}"
+      def degree
+        "#{fetch('educator.tertiary.degree.type')} #{fetch('educator.tertiary.degree.subject')}"
+      end
+
+      alias course degree
+
+      def course
+        warn "[DEPRECATION] 'course' is deprecated. Please use 'degree' instead."
+        degree
       end
 
       def subject
         "#{fetch('educator.tertiary.degree.subject')}"
       end
 
-      def degree
-        "#{fetch('educator.tertiary.degree.type')} #{fetch('educator.tertiary.degree.subject')}"
+      def course_name
+        "#{fetch('educator.tertiary.degree.subject')} #{numerify(fetch('educator.tertiary.degree.course_number'))}"
       end
 
       def secondary_school
