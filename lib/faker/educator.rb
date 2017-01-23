@@ -3,6 +3,8 @@ module Faker
     flexible :educator
 
     class << self
+      extend Gem::Deprecate
+
       def university
         "#{parse('educator.name')} #{fetch('educator.tertiary.type')}"
       end
@@ -12,11 +14,7 @@ module Faker
       end
 
       alias course degree
-
-      def course
-        warn "[DEPRECATION] 'course' is deprecated. Please use 'degree' instead."
-        degree
-      end
+      deprecate :course, :course_name, 2017, 1
 
       def subject
         "#{fetch('educator.tertiary.degree.subject')}"
